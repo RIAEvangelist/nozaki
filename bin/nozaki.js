@@ -1,8 +1,13 @@
 #! /usr/bin/env node
 import process from 'process';
+import fs from 'fs';
 
 const args=Object.assign([],process.argv);
-const cli={};
+const cli={
+    path:process.argv[1].replace(/\\/g,'/')
+        .replace('bin/nozaki.js','')
+};
+let dir='./components';
 
 {
     if(args.length<4){
@@ -21,13 +26,23 @@ const cli={};
 let lastKey='';
 for(let i = 0; i < args.length; ++i) {
     if(!(i%2)){
-        lastKey=args[i].toLowerCase();
+        lastKey=args[i].toLowerCase().replace('-','');
     }else{
         cli[lastKey]=args[i];
     }
 }
 
-console.log(cli);
+{
+    (cli.dir)? null:cli.dir=dir;
+
+    if (!fs.existsSync(cli.dir)){
+        fs.mkdirSync(cli.dir);
+    }
+    
+    console.log(cli);
+
+    fs.copyFileSync(`${cli.path}/boilerplate.js`, `${cli.dir}/${cli.new}.js`);
+}
 
 function showHelp(){
     const helpMap={
@@ -35,7 +50,9 @@ function showHelp(){
             based on the custom-component String in the designated or default (components) 
             directory for components.`,
 
-        '-dir':`accepts a String like "./my-components-dir" and places the new component in that directory.`
+        '-dir':`accepts a String like "./my-components-dir" and places the new component in that directory.`,
+
+        '-h|-help':'Shows this menu. it must be the only arg passed.'
     }
     
     for(let key in helpMap){
