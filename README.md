@@ -9,11 +9,34 @@
 
 ```sh
 
-#to create if needed and store the component in the ./components dir
+#create a new component called custom-element and store it in the 
+# default "./components" dir
 $nozaki new custom-element 
 
-#to create if needed and store the component in a specific dir
+#create a new component called custom-element and store it in the 
+# "./wherever" dir
 $nozaki new custom-element -dir ./wherever
+
+#create a new example file for the custom-element component 
+# and store it in the default "./example" dir
+$nozaki example custom-element 
+
+#create a new example file for the custom-element component 
+# and store it in the "./whatever" dir
+$nozaki example custom-element -exdir ./whatever
+
+
+
+
+
+#create a new component and example for a component called 
+# custom-element and store use the default dirs
+$nozaki new custom-element example custom-element
+
+#create a new component and example for a component called 
+# custom-element and store use user defined dirs
+$nozaki new custom-element -dir ./wherever example custom-element -exdir ./whatever
+
 
 ```
 

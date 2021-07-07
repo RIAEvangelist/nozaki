@@ -7,7 +7,9 @@ const cli={
     path:process.argv[1].replace(/\\/g,'/')
         .replace('bin/nozaki.js','')
 };
-let dir='./components';
+
+const dir='./components/';
+const exdir='./example/';
 
 {
     if(args.length<4 || (args.length%2)){
@@ -32,7 +34,7 @@ for(let i = 0; i < args.length; ++i) {
     }
 }
 
-{
+if(cli.new){
     (cli.dir)? null:cli.dir=dir;
     
     const classNameParts=cli.new.split('-');
@@ -52,7 +54,34 @@ for(let i = 0; i < args.length; ++i) {
         .replace(/nozaki-x/g,cli.new)
         .replace(/NozakiX/g,className);
     
-    fs.writeFileSync(`${cli.dir}/${cli.new}.js`,boilerplate,'utf8');
+    fs.writeFileSync(`${cli.dir}${cli.new}.js`,boilerplate,'utf8');
+
+    console.log(`created component ${cli.dir}${cli.new}.js`);
+}
+
+if(cli.example){
+    (cli.exdir)? null:cli.exdir=exdir;
+    
+    const classNameParts=cli.example.split('-');
+    let className='';
+
+    for(let i=0;i<classNameParts.length; i++){
+
+        className+=classNameParts[i][0].toUpperCase()+
+            classNameParts[i].slice(1);
+    }
+
+    if (!fs.existsSync(cli.exdir)){
+        fs.mkdirSync(cli.exdir);
+    }
+    
+    let boilerplate=fs.readFileSync(`${cli.path}boilerplate-example.html`, 'utf8')
+        .replace(/nozaki-x/g,cli.example)
+        .replace(/NozakiX/g,className);
+    
+    fs.writeFileSync(`${cli.exdir}${cli.example}.html`,boilerplate,'utf8');
+
+    console.log(`created example ${cli.exdir}${cli.example}.html`);
 }
 
 function showHelp(){
