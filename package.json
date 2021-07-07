@@ -1,0 +1,26 @@
+{
+  "name": "nozaki",
+  "version": "0.0.0",
+  "description": "nozaki cli for creating boilerplate web components",
+  "main": "bin/nozaki.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RIAEvangelist/nozaki.git"
+  },
+  "keywords": [
+    "cli",
+    "boilerplate",
+    "web",
+    "components",
+    "webcomponents"
+  ],
+  "author": "Brandon Nozaki Miller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RIAEvangelist/nozaki/issues"
+  },
+  "homepage": "https://github.com/RIAEvangelist/nozaki#readme"
+}
