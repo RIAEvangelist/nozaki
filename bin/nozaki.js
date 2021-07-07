@@ -10,7 +10,7 @@ const cli={
 let dir='./components';
 
 {
-    if(args.length<4){
+    if(args.length<4 || (args.length%2)){
         showHelp();
 
         process.exit(0);
@@ -34,23 +34,36 @@ for(let i = 0; i < args.length; ++i) {
 
 {
     (cli.dir)? null:cli.dir=dir;
+    
+    const classNameParts=cli.new.split('-');
+    let className='';
+
+    for(let i=0;i<classNameParts.length; i++){
+
+        className+=classNameParts[i][0].toUpperCase()+
+            classNameParts[i].slice(1);
+    }
 
     if (!fs.existsSync(cli.dir)){
         fs.mkdirSync(cli.dir);
     }
     
-    console.log(cli);
-
-    fs.copyFileSync(`${cli.path}/boilerplate.js`, `${cli.dir}/${cli.new}.js`);
+    let boilerplate=fs.readFileSync(`${cli.path}/boilerplate.js`, 'utf8')
+        .replace(/nozaki-x/g,cli.new)
+        .replace(/NozakiX/g,className);
+    
+    fs.writeFileSync(`${cli.dir}/${cli.new}.js`,boilerplate,'utf8');
 }
 
 function showHelp(){
+    console.log('\nEither help requested or there was an error in your command.\n\n');
     const helpMap={
         new:`accepts a String like "custom-component" and creates a new boilerplate component
             based on the custom-component String in the designated or default (components) 
             directory for components.`,
 
-        '-dir':`accepts a String like "./my-components-dir" and places the new component in that directory.`,
+        '-dir':`accepts a String like "./my-components-dir" and places the new component 
+            in that directory.`,
 
         '-h|-help':'Shows this menu. it must be the only arg passed.'
     }
