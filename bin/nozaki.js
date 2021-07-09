@@ -91,19 +91,27 @@ function showHelp(){
     
     `);
     const helpMap={
-        new:`accepts a String like ${color.magenta}custom-component${color.end} and creates a new boilerplate component
+        new:`accepts a String like; ${color.magenta}custom-component${color.end}, and creates a new boilerplate component ${color.green}class${color.end}
             based on the custom-component String in the designated or default (${color.cyan}./components/${color.end}) 
-            directory for components.`,
+            directory for component classes.`,
 
-        '-dir':`accepts a String like ${color.cyan}./my-components-dir${color.end} and places the new component 
-            in that directory.`,
+        example:`accepts a String like; ${color.magenta}custom-component${color.end}, and creates a new boilerplate component ${color.green}example${color.end}
+                based on the custom-component String in the designated or default (${color.cyan}./example/${color.end}) 
+                directory for component examples.`,
 
-        '-h|-help':`Shows this menu. It must be the only arg passed. ${color.yellow}This menu will also show if the input has an error${color.end}`
+        '-dir':`accepts any valid path from the current dir like; ${color.cyan}./userDefined/path${color.end} 
+            and places the new component ${color.green}class${color.end} in that directory.`,
+
+        '-exdir':`accepts any valid path from the current dir like; ${color.cyan}./my-components-dir${color.end} 
+            and places the new component ${color.green}example${color.end} in that directory.`,
+
+        '-h|-help':`Shows this menu. It must be the only arg passed. 
+                ${color.yellow}This menu will also show if the input has an error${color.end}`
     }
     
     for(let key in helpMap){
         console.log(`
-${key}:     ${helpMap[key]}
+${color.green}${key}${color.end}:     ${helpMap[key]}
         
         `);
     }
