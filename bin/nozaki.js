@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 import process from 'process';
 import fs from 'fs';
+import {color,background,style,resetAllColors} from 'nozaki-colors';
 
 const args=Object.assign([],process.argv);
 const cli={
@@ -54,9 +55,9 @@ if(cli.new){
         .replace(/nozaki-x/g,cli.new)
         .replace(/NozakiX/g,className);
     
-    fs.writeFileSync(`${cli.dir}${cli.new}.js`,boilerplate,'utf8');
+    fs.writeFileSync(`${cli.dir}${className}.js`,boilerplate,'utf8');
 
-    console.log(`created component ${cli.dir}${cli.new}.js`);
+    console.log(`${color.green}created component ${color.cyan}${cli.dir}${color.magenta}${className}${color.cyan}.js${color.end}`);
 }
 
 if(cli.example){
@@ -81,20 +82,23 @@ if(cli.example){
     
     fs.writeFileSync(`${cli.exdir}${cli.example}.html`,boilerplate,'utf8');
 
-    console.log(`created example ${cli.exdir}${cli.example}.html`);
+    console.log(`${color.green}created example ${color.cyan}${cli.exdir}${color.magenta}${cli.example}${color.cyan}.html${color.end}`);
 }
 
 function showHelp(){
-    console.log('\nEither help requested or there was an error in your command.\n\n');
+    console.log(`
+        ${color.yellow}Either help requested or there was an error in your command.${color.end}
+    
+    `);
     const helpMap={
-        new:`accepts a String like "custom-component" and creates a new boilerplate component
-            based on the custom-component String in the designated or default (components) 
+        new:`accepts a String like ${color.magenta}custom-component${color.end} and creates a new boilerplate component
+            based on the custom-component String in the designated or default (${color.cyan}./components/${color.end}) 
             directory for components.`,
 
-        '-dir':`accepts a String like "./my-components-dir" and places the new component 
+        '-dir':`accepts a String like ${color.cyan}./my-components-dir${color.end} and places the new component 
             in that directory.`,
 
-        '-h|-help':'Shows this menu. it must be the only arg passed.'
+        '-h|-help':`Shows this menu. It must be the only arg passed. ${color.yellow}This menu will also show if the input has an error${color.end}`
     }
     
     for(let key in helpMap){

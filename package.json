@@ -1,11 +1,11 @@
 {
   "name": "nozaki",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "nozaki cli for creating boilerplate web components",
   "main": "bin/nozaki.js",
-  "type":"module",
-  "bin": {  
-    "nozaki": "./bin/nozaki.js"  
+  "type": "module",
+  "bin": {
+    "nozaki": "./bin/nozaki.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/RIAEvangelist/nozaki/issues"
   },
-  "homepage": "https://github.com/RIAEvangelist/nozaki#readme"
+  "homepage": "https://github.com/RIAEvangelist/nozaki#readme",
+  "dependencies": {
+    "nozaki-colors": "^1.0.1"
+  }
 }
