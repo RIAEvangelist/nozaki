@@ -45,6 +45,10 @@ class NozakiX extends HTMLElement {
         return this;
     }
 
+    static get observedAttributes() { 
+        return []; 
+    }
+
     async attributeChangedCallback(name, oldVal, newVal){
 
         return this;
