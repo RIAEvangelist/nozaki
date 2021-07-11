@@ -29,6 +29,9 @@ class NozakiX extends HTMLElement {
         return this;
     }
 
+    // learn more about webcomponent lifecycle on MDN
+    // https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks
+
     static get observedAttributes() {
         return [
             

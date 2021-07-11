@@ -83,6 +83,9 @@ class CustomElement extends HTMLElement {
         return this;
     }
 
+    // learn more about webcomponent lifecycle on MDN
+    // https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks
+
     static get observedAttributes() {
         return [
             
@@ -97,6 +100,10 @@ class CustomElement extends HTMLElement {
     async disconnectedCallback(){
 
         return this;
+    }
+
+    static get observedAttributes() { 
+        return []; 
     }
 
     async attributeChangedCallback(name, oldVal, newVal){
@@ -116,6 +123,9 @@ export {
 
 ```
 
+### Refrences
+
+[MDN Using Web Component Lifecycle Callbacks](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks)
 
 ### Checkout the nozaki-components lib/framework
 [nozaki-components](https://github.com/RIAEvangelist/nozaki-components), modern vanilla components designed with ES6+ ESM first works in all modern browsers without transpiling.
