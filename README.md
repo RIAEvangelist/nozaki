@@ -129,3 +129,6 @@ export {
 
 ### Checkout the nozaki-components lib/framework
 [nozaki-components](https://github.com/RIAEvangelist/nozaki-components), modern vanilla components designed with ES6+ ESM first works in all modern browsers without transpiling.
+
+### Checkout the nozaki-colors module
+[`nozaki-colors`](https://github.com/RIAEvangelist/nozaki-colors) An extremely lightweight color and styling module for the console/terminal/commandline.
