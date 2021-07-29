@@ -3,7 +3,7 @@
 
 ## Install
 
-`npm i -g nozaki` will give windows|mac|windows users access to the `nozaki` cli
+`npm i -g nozaki` will give windows|mac|linux users access to the `nozaki` cli
 
 ### Use
 
